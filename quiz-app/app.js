@@ -4,13 +4,15 @@ require('dotenv').config();
 const connectDB = require('./config/database');
 const quizRoutes = require('./routes/quizRoutes');
 const questionRoutes = require('./routes/questionRoutes');
+const cors = require('cors');  // Thêm import cors
 
 const app = express();
 
-// Connect to MongoDB
+// Kết nối MongoDB
 connectDB();
 
-// Middleware
+// Cấu hình middleware
+app.use(cors());  // Thêm middleware cors để cho phép các yêu cầu cross-origin
 app.use(bodyParser.json());
 
 // Routes
